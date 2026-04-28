@@ -1,0 +1,16 @@
+{
+  "orgName": "Agentforce Vibes Scratch Org",
+  "edition": "Developer",
+  "features": [
+    "EnableSetPasswordInApi",
+    "ServiceCloudConsole"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "salesforce.salesforcedx-vscode-core",
+    "salesforce.salesforcedx-vscode-lwc",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "charliermarsh.ruff"
+  ]
+}

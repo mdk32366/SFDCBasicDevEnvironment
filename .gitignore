@@ -1,0 +1,35 @@
+# Agentforce Vibes - Development Environment
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Salesforce
+.sfdx/
+.sf/
+*.zip
+deploy-result/
+retrieve-result/
+
+# IDE
+.vscode/!.vscode/settings.json
+.vscode/!.vscode/tasks.json
+.vscode/!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.log

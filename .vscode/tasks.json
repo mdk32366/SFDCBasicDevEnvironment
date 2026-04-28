@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Deploy Salesforce Code",
+      "type": "shell",
+      "command": "sf",
+      "args": ["project", "deploy", "start", "-o", "vibes-org"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Retrieve Salesforce Code",
+      "type": "shell",
+      "command": "sf",
+      "args": ["project", "retrieve", "start", "-o", "vibes-org"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Python Tests",
+      "type": "shell",
+      "command": "python",
+      "args": ["-m", "pytest", "python/", "-v"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "test"
+      }
+    },
+    {
+      "label": "Install Python Dependencies",
+      "type": "shell",
+      "command": "pip",
+      "args": ["install", "-r", "python/requirements.txt"],
+      "problemMatcher": []
+    }
+  ]
+}

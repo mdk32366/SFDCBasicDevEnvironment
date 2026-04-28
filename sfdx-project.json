@@ -1,0 +1,17 @@
+{
+  "name": "Agentforce Vibes",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "59.0",
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "plugins": {
+    "@salesforce/sfdx-scanner": {
+      "disable": false
+    }
+  }
+}
