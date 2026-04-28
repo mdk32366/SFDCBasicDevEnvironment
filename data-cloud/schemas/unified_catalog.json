@@ -211,7 +211,7 @@
         {
           "name": "premium",
           "type": "decimal",
-          "description": "Annual premium amount",
+          "description": "Annual premium amount"
         },
         {
           "name": "start_date",
