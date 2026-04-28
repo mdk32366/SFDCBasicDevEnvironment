@@ -1,0 +1,282 @@
+{
+  "catalog_name": "AgentforceVibesnifiedCatalog",
+  "version": "1.0.0",
+  "description": "Unified Data Cloud catalog for ML-driven agent training and insights",
+  "entities": [
+    {
+      "entity_name": "Account",
+      "source_system": "Salesforce",
+      "type": "core_object",
+      "fields": [
+        {
+          "name": "account_id",
+          "type": "string",
+          "description": "Unique account identifier",
+          "source_field": "Id",
+          "is_key": true
+        },
+        {
+          "name": "account_name",
+          "type": "string",
+          "description": "Account name",
+          "source_field": "Name"
+        },
+        {
+          "name": "industry",
+          "type": "string",
+          "description": "Industry classification",
+          "source_field": "Industry"
+        },
+        {
+          "name": "annual_revenue",
+          "type": "decimal",
+          "description": "Annual revenue in USD",
+          "source_field": "AnnualRevenue"
+        },
+        {
+          "name": "number_of_employees",
+          "type": "integer",
+          "description": "Number of employees",
+          "source_field": "NumberOfEmployees"
+        },
+        {
+          "name": "billing_country",
+          "type": "string",
+          "description": "Billing country",
+          "source_field": "BillingCountry"
+        },
+        {
+          "name": "created_date",
+          "type": "timestamp",
+          "description": "Record creation date",
+          "source_field": "CreatedDate"
+        },
+        {
+          "name": "last_modified_date",
+          "type": "timestamp",
+          "description": "Last modification date",
+          "source_field": "LastModifiedDate"
+        }
+      ],
+      "relationships": [
+        {
+          "related_entity": "Contact",
+          "type": "one_to_many",
+          "join_key": "account_id",
+          "related_key": "account_id"
+        },
+        {
+          "related_entity": "Opportunity",
+          "type": "one_to_many",
+          "join_key": "account_id",
+          "related_key": "account_id"
+        }
+      ]
+    },
+    {
+      "entity_name": "Contact",
+      "source_system": "Salesforce",
+      "type": "core_object",
+      "fields": [
+        {
+          "name": "contact_id",
+          "type": "string",
+          "description": "Unique contact identifier",
+          "source_field": "Id",
+          "is_key": true
+        },
+        {
+          "name": "account_id",
+          "type": "string",
+          "description": "Associated account ID",
+          "source_field": "AccountId"
+        },
+        {
+          "name": "first_name",
+          "type": "string",
+          "description": "Contact first name",
+          "source_field": "FirstName"
+        },
+        {
+          "name": "last_name",
+          "type": "string",
+          "description": "Contact last name",
+          "source_field": "LastName"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "description": "Email address",
+          "source_field": "Email"
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "Phone number",
+          "source_field": "Phone"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Job title",
+          "source_field": "Title"
+        },
+        {
+          "name": "created_date",
+          "type": "timestamp",
+          "description": "Record creation date",
+          "source_field": "CreatedDate"
+        }
+      ]
+    },
+    {
+      "entity_name": "Opportunity",
+      "source_system": "Salesforce",
+      "type": "core_object",
+      "fields": [
+        {
+          "name": "opportunity_id",
+          "type": "string",
+          "description": "Unique opportunity identifier",
+          "source_field": "Id",
+          "is_key": true
+        },
+        {
+          "name": "account_id",
+          "type": "string",
+          "description": "Associated account ID",
+          "source_field": "AccountId"
+        },
+        {
+          "name": "opportunity_name",
+          "type": "string",
+          "description": "Opportunity name",
+          "source_field": "Name"
+        },
+        {
+          "name": "amount",
+          "type": "decimal",
+          "description": "Opportunity amount in USD",
+          "source_field": "Amount"
+        },
+        {
+          "name": "stage",
+          "type": "string",
+          "description": "Sales pipeline stage",
+          "source_field": "StageName"
+        },
+        {
+          "name": "close_date",
+          "type": "date",
+          "description": "Expected close date",
+          "source_field": "CloseDate"
+        },
+        {
+          "name": "probability",
+          "type": "decimal",
+          "description": "Win probability percentage",
+          "source_field": "Probability"
+        },
+        {
+          "name": "created_date",
+          "type": "timestamp",
+          "description": "Record creation date",
+          "source_field": "CreatedDate"
+        }
+      ]
+    },
+    {
+      "entity_name": "Policy",
+      "source_system": "External",
+      "type": "core_object",
+      "fields": [
+        {
+          "name": "policy_id",
+          "type": "string",
+          "description": "Unique policy identifier",
+          "is_key": true
+        },
+        {
+          "name": "account_id",
+          "type": "string",
+          "description": "Associated account ID",
+          "join_key": true
+        },
+        {
+          "name": "policy_type",
+          "type": "string",
+          "description": "Type of policy (auto, home, life, etc.)",
+          "enum": ["auto", "home", "life", "health", "business"]
+        },
+        {
+          "name": "premium",
+          "type": "decimal",
+          "description": "Annual premium amount",
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "description": "Policy start date"
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "description": "Policy end date"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "Policy status",
+          "enum": ["active", "inactive", "cancelled", "expired"]
+        }
+      ]
+    }
+  ],
+  "data_sources": [
+    {
+      "source_id": "salesforce_prod",
+      "type": "salesforce",
+      "name": "Production Salesforce Org",
+      "description": "Main Salesforce production environment",
+      "config": {
+        "instance_url": "${SALESFORCE_INSTANCE_URL}",
+        "auth_type": "oauth2",
+        "sync_frequency": "hourly",
+        "batch_size": 10000
+      }
+    },
+    {
+      "source_id": "external_api",
+      "type": "api",
+      "name": "External Policy Management API",
+      "description": "Third-party policy and claims system",
+      "config": {
+        "endpoint": "${EXTERNAL_API_ENDPOINT}",
+        "auth_type": "api_key",
+        "sync_frequency": "daily",
+        "retry_attempts": 3
+      }
+    },
+    {
+      "source_id": "csv_import",
+      "type": "file",
+      "name": "CSV File Import",
+      "description": "Batch import from CSV files",
+      "config": {
+        "file_path": "data-cloud/uploads/",
+        "format": "csv",
+        "delimiter": ",",
+        "encoding": "utf-8"
+      }
+    }
+  ],
+  "ml_training_config": {
+    "enabled": true,
+    "training_data_retention_days": 730,
+    "export_formats": ["parquet", "csv", "json"],
+    "feature_engineering": {
+      "enabled": true,
+      "auto_create_features": true
+    }
+  }
+}

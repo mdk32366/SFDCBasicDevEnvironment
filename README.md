@@ -37,6 +37,7 @@ Your Dev Org will persist indefinitely (unlike Scratch Orgs which expire after 3
 
 - **force-app/main/default/** - Salesforce Apex and Lightning components
 - **python/** - Python agent code and utilities
+- **data-cloud/** - Data Cloud unified catalog configuration and ML datasets
 - **config/** - Configuration files for Salesforce and development
 - **.vscode/** - VS Code settings and tasks
 
@@ -51,6 +52,12 @@ Your Dev Org will persist indefinitely (unlike Scratch Orgs which expire after 3
 - Run scripts from `python/` directory
 - Install additional packages with `pip install <package>` and update `requirements.txt`
 
+### Data Cloud Development
+- Configure unified catalog in `data-cloud/schemas/unified_catalog.json`
+- Create data connectors and transformations
+- Generate ML training datasets
+- See [Data Cloud Setup Guide](data-cloud/SETUP_GUIDE.md) for detailed instructions
+
 ## Useful Commands
 
 ```bash
@@ -61,9 +68,51 @@ sf project retrieve start -o vibes-org
 
 # Python
 pip install -r python/requirements.txt
-python python/main.py
+python python/agent.py
+
+# Data Cloud
+cd data-cloud
+python orchestrator.py
+python -m pytest test_datacloud.py
+```
+
+## Data Cloud Unified Catalog
+
+Agentforce Vibes includes a unified Data Cloud catalog for ML-driven agent training:
+
+**Core Entities:**
+- **Account, Contact, Opportunity** - Salesforce core objects
+- **Policy** - External policy management data
+
+**Multi-source Integration:**
+- Salesforce production objects
+- External APIs and webhooks  
+- CSV file imports
+- Third-party systems (Marketo, SAP, etc.)
+
+**ML Features:**
+- Automatic train/test dataset generation
+- Feature engineering and auto-generation
+- Multiple export formats (CSV, Parquet, JSON)
+- Data quality validation
+- 2-year retention for ML training
+
+### Quick Start
+
+```bash
+cd data-cloud
+
+# View catalog configuration
+python orchestrator.py
+
+# Run complete sync pipeline
+python -c "from orchestrator import DataCloudOrchestrator; o = DataCloudOrchestrator(); print(o.get_catalog_summary())"
+
+# Create ML training dataset
+python -c "from transformations.ml_training import MLTrainingDatasetManager; m = MLTrainingDatasetManager('default'); print('Ready for ML')"
 ```
 
 ## Documentation
 
-See [.github/copilot-instructions.md](.github/copilot-instructions.md) for detailed setup instructions.
+- [Data Cloud Setup Guide](data-cloud/SETUP_GUIDE.md) - Complete Data Cloud configuration
+- [.github/copilot-instructions.md](.github/copilot-instructions.md) - Project setup instructions
