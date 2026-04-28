@@ -2,6 +2,20 @@
 
 A development environment for building intelligent agents using Salesforce Apex and Python.
 
+> 📋 **This repository serves as a starter template for Agentforce projects.** See [TEMPLATE.md](TEMPLATE.md) for instructions on cloning and customizing this for your new projects.
+
+## Using This as a Template
+
+To create a new Agentforce project from this template:
+
+**Windows (Recommended):**
+```powershell
+.\init-new-project.ps1 -ProjectName "MyNewProject"
+```
+
+**All Platforms:**
+See [TEMPLATE.md](TEMPLATE.md) for step-by-step instructions.
+
 ## Prerequisites
 
 - Node.js 16+ (for Salesforce CLI)
@@ -114,5 +128,25 @@ python -c "from transformations.ml_training import MLTrainingDatasetManager; m =
 
 ## Documentation
 
+- **[TEMPLATE.md](TEMPLATE.md)** - ⭐ Using this repo as a template for new projects
 - [Data Cloud Setup Guide](data-cloud/SETUP_GUIDE.md) - Complete Data Cloud configuration
+- [Data Cloud Quick Start](data-cloud/QUICKSTART.md) - Quick reference and examples
 - [.github/copilot-instructions.md](.github/copilot-instructions.md) - Project setup instructions
+- [config/DEV_ORG_SETUP.md](config/DEV_ORG_SETUP.md) - Salesforce Dev Org setup
+
+## Demo Scripts & Validation
+
+This template includes working demos and verification scripts:
+- `data-cloud/demo_ml_training.py` - ML dataset creation and export
+- `data-cloud/demo_agent_integration.py` - Agent + Data Cloud integration
+- `data-cloud/demo_orchestrator_pipeline.py` - Full end-to-end pipeline
+- `data-cloud/verify_installation.py` - System health verification
+
+Run demos:
+```bash
+cd data-cloud
+python demo_ml_training.py
+python demo_agent_integration.py
+python demo_orchestrator_pipeline.py
+python verify_installation.py
+```
