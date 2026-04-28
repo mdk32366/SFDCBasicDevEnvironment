@@ -10,5 +10,19 @@
   "[apex]": {
     "editor.formatOnSave": true
   },
-  "salesforcedx-vscode-core.show-cli-success-msg": true
+  "salesforcedx-vscode-core.show-cli-success-msg": true,
+  "files.exclude": {
+    "**/.apivcs": true,
+    "**/.gitignore": true,
+    "**/.git": true,
+    "**/.designer.json": true,
+    "**/.exchange.xml": true,
+    "**/.vscode": true,
+    "**/.mvn": true,
+    "**/.tmp": true,
+    "**/.settings": true,
+    "**/.exchange_modules_tmp": true
+  },
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.wordBasedSuggestions": "off"
 }

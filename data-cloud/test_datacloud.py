@@ -77,7 +77,7 @@ class TestDataTransformer:
         raw_records = [
             {
                 "account_name": "  Test Corp  ",
-                "annual_revenue": "1000000"
+                "annual_revenue": 1000000
             }
         ]
         normalized = transformer.normalize_data(raw_records)

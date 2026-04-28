@@ -1,0 +1,57 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__body">
+                        <h1 class="slds-page-header__title slds-truncate slds-align-middle">
+                            Unified Data Catalog
+                        </h1>
+                        <p class="slds-text-body_small slds-text-color_weak">
+                            Browse entities and data sources in Agentforce Vibes
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template if:true={isLoading}>
+        <div class="slds-align_absolute-center slds-m-vertical_large">
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:false={isLoading}>
+        <div class="slds-page-header slds-m-top_medium">
+            <div class="slds-m-horizontal_large">
+                <h2 class="slds-text-heading_medium slds-m-bottom_small">
+                    Entities
+                </h2>
+            </div>
+        </div>
+
+        <div class="slds-m-horizontal_large">
+            <template if:true={hasEntities}>
+                <div class="slds-grid slds-wrap slds-grid_pull-padded">
+                    <template for:each={catalogData} for:item="entity">
+                        <div key={entity.entity_name} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-horizontal_small slds-m-bottom_medium">
+                            <lightning-card title={entity.entity_name}>
+                                <div class="slds-m-around_small">
+                                    <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">
+                                        {entity.description}
+                                    </p>
+                                    <div class="slds-list_dotted slds-text-body_x-small">
+                                        <div>Source: {entity.source_system}</div>
+                                        <div>Type: {entity.type}</div>
+                                        <div>Fields: {entity.fieldCount}</div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

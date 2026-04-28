@@ -13,8 +13,8 @@ Agentforce Vibes is a hybrid development project combining Salesforce Apex and P
 - [x] **Create Python Virtual Environment** - Isolated Python environment
 - [x] **Install Dependencies** - npm and pip packages
 - [x] **Create Development Tasks** - Build and test tasks
-- [ ] **Verify Installation** - Test Salesforce CLI and Python
-- [ ] **Launch Development Environment** - Ready for development
+- [x] **Verify Installation** - Test Salesforce CLI and Python
+- [x] **Launch Development Environment** - Ready for development
 
 ## Development Stack
 - **Salesforce**: Apex, Lightning Web Components
